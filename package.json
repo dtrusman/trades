@@ -1,0 +1,18 @@
+{
+  "name": "trade",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "backend": "yarn --cwd backend server:dev",
+    "backend:build": "yarn --cwd backend",
+    "frontend": "yarn --cwd frontend start",
+    "frontend:build": "yarn --cwd frontend",
+    "database": "docker-compose -f backend/Docker/docker-compose.yml up -d",
+    "build": "concurrently \"yarn backend:build\" \"yarn frontend:build\"",
+    "start": "concurrently \"yarn backend\" \"yarn frontend\""
+  },
+  "dependencies": {
+    "concurrently": "^6.0.0"
+  }
+}
