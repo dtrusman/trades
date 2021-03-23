@@ -5,6 +5,11 @@ export const Out = styled.span`
   color: green;
 `;
 
+export const Loss = styled.span`
+  font-weight: 700;
+  color: red;
+`;
+
 export const Delete = styled.a`
   display: flex;
   justify-content: center;

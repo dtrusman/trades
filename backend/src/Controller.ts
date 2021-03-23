@@ -10,15 +10,11 @@ class Controller {
       quantity,
       price,
       value,
-      gain1,
-      sell1,
-      out1,
-      gain2,
-      sell2,
-      out2,
-      gain3,
-      sell3,
-      out3,
+      gain,
+      sell,
+      out,
+      loss,
+      stop,
     } = request.body;
 
     const order = {
@@ -27,15 +23,11 @@ class Controller {
       quantity,
       price,
       value,
-      gain1,
-      sell1,
-      out1,
-      gain2,
-      sell2,
-      out2,
-      gain3,
-      sell3,
-      out3,
+      gain,
+      sell,
+      out,
+      loss,
+      stop,
     };
 
     const db = await Connection.database();

@@ -10,9 +10,9 @@ const Trade: React.FC = () => {
   const [formData, setFormData] = useState<Order>()
   const [data, setData] = useState<[]>([])
   const [price, setPrice] = useState('')
-  const [gain1, setGain1] = useState('')
-  const [gain2, setGain2] = useState('')
-  const [gain3, setGain3] = useState('')
+  const [gain, setGain] = useState('')
+  const [loss, setLoss] = useState('')
+  
   
   const [form] = Form.useForm()
 
@@ -26,13 +26,14 @@ const Trade: React.FC = () => {
   }, [formData])
 
   useEffect(() => {
-    const out1 = parseFloat(price) + parseFloat(price) * (parseInt(gain1) / 100);
-    const out2 = parseFloat(price) + parseFloat(price) * (parseInt(gain2) / 100);
-    const out3 = parseFloat(price) + parseFloat(price) * (parseInt(gain3) / 100);
-    out1 && form.setFieldsValue({ out1 })
-    out2 && form.setFieldsValue({ out2 })
-    out3 && form.setFieldsValue({ out3 })
-  }, [gain1, gain2, gain3])
+    const out = parseFloat(price) + parseFloat(price) * (parseInt(gain) / 100);
+    out && form.setFieldsValue({ out })
+  }, [gain])
+
+  useEffect(() => {
+    const stop = parseFloat(price) - parseFloat(price) * (parseInt(loss) / 100);
+    stop && form.setFieldsValue({ stop })
+  }, [loss])
 
   return (
     <Wrapper>
@@ -58,37 +59,19 @@ const Trade: React.FC = () => {
         </Form.Item>
 
         <PartialsContainer>
-          <Form.Item name="gain1" label="Ganho 1" rules={[{ required: true, message: 'Ganho 1 é obrigatório'}]}>
-            <Input min="0" step="0.00001" style={{ width: '100%' }} onChange={(value) => setGain1(value.target.value)} />
+          <Form.Item name="gain" label="Ganho" rules={[{ required: true, message: 'Ganho é obrigatório'}]}>
+            <Input min="0" step="0.00001" style={{ width: '100%' }} onChange={(value) => setGain(value.target.value)} />
           </Form.Item>
-          <Form.Item name="sell1" label="Venda 1" rules={[{ required: true, message: 'Venda 1 é obrigatório'}]}>
+          <Form.Item name="sell" label="Venda" rules={[{ required: true, message: 'Venda é obrigatório'}]}>
             <Input min="0" step="0.00001" style={{ width: '100%' }} />
           </Form.Item>
-          <Form.Item name="out1" label="Saída 1" rules={[{ required: true, message: 'Saída 1 é obrigatório'}]}>
+          <Form.Item name="out" label="Saída" rules={[{ required: true, message: 'Saída é obrigatório'}]}>
             <Input disabled={true} style={{ width: '100%' }} />
           </Form.Item>
-        </PartialsContainer>
-
-        <PartialsContainer>
-          <Form.Item name="gain2" label="Ganho 2">
-            <Input min="0" step="0.00001" style={{ width: '100%' }} onChange={(value) => setGain2(value.target.value)} />
+          <Form.Item name="loss" label="Perda" rules={[{ required: true, message: 'Perda é obrigatório'}]}>
+            <Input min="0" step="0.00001" style={{ width: '100%' }} onChange={(value) => setLoss(value.target.value)} />
           </Form.Item>
-          <Form.Item name="sell2" label="Venda 2">
-            <Input min="0" step="0.00001" style={{ width: '100%' }} />
-          </Form.Item>
-          <Form.Item name="out2" label="Saída 2" rules={[{ required: true, message: 'Saída 2 é obrigatório'}]}>
-            <Input disabled={true} style={{ width: '100%' }} />
-          </Form.Item>
-        </PartialsContainer>
-
-        <PartialsContainer>
-          <Form.Item name="gain3" label="Ganho 3">
-            <Input min="0" step="0.00001" style={{ width: '100%' }} onChange={(value) => setGain3(value.target.value)} />
-          </Form.Item>
-          <Form.Item name="sell3" label="Venda 3">
-            <Input min="0" step="0.00001" style={{ width: '100%' }} />
-          </Form.Item>
-          <Form.Item name="out3" label="Saída 3" rules={[{ required: true, message: 'Saída 3 é obrigatório'}]}>
+          <Form.Item name="stop" label="Stop" rules={[{ required: true, message: 'Stop é obrigatório'}]}>
             <Input disabled={true} style={{ width: '100%' }} />
           </Form.Item>
         </PartialsContainer>

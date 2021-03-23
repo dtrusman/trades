@@ -7,19 +7,13 @@ export const onFinish = ({ setFormData, values }: OnFinish) => {
     quantity,
     price,
     value,
-    gain1,
-    sell1,
-    gain2,
-    sell2,
-    gain3,
-    sell3,
+    gain,
+    sell,
+    loss,
+    stop,
   } = values;
 
-  const out1 = parseFloat(price) + parseFloat(price) * (parseInt(gain1) / 100);
-  const out2 =
-    gain2 && parseFloat(price) + parseFloat(price) * (parseInt(gain2) / 100);
-  const out3 =
-    gain3 && parseFloat(price) + parseFloat(price) * (parseInt(gain3) / 100);
+  const out = parseFloat(price) + parseFloat(price) * (parseInt(gain) / 100);
 
   setFormData({
     currency,
@@ -27,14 +21,10 @@ export const onFinish = ({ setFormData, values }: OnFinish) => {
     quantity,
     price: parseFloat(price),
     value: parseFloat(value),
-    gain1: parseFloat(gain1),
-    sell1: parseFloat(sell1),
-    gain2: gain2 && parseFloat(gain2),
-    sell2: sell2 && parseFloat(sell2),
-    gain3: gain3 && parseFloat(gain3),
-    sell3: sell3 && parseFloat(sell3),
-    out1,
-    out2,
-    out3,
+    gain: parseFloat(gain),
+    sell: parseFloat(sell),
+    out,
+    loss,
+    stop,
   });
 };

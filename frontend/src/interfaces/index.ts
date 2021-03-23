@@ -4,15 +4,11 @@ export interface Order {
   quantity: number;
   price: number;
   value: number;
-  gain1: number;
-  sell1: number;
-  gain2?: number;
-  sell2?: number;
-  gain3?: number;
-  sell3?: number;
-  out1?: number;
-  out2?: number;
-  out3?: number;
+  gain: number;
+  sell: number;
+  out?: number;
+  loss?: any;
+  stop?: any;
 }
 
 export interface OnFinish {
@@ -23,11 +19,9 @@ export interface OnFinish {
     quantity: number;
     price: string;
     value: string;
-    gain1: string;
-    sell1: string;
-    gain2?: string;
-    sell2?: string;
-    gain3?: string;
-    sell3?: string;
+    gain: string;
+    sell: string;
+    loss?: any;
+    stop?: any;
   };
 }
