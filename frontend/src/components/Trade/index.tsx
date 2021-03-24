@@ -37,41 +37,41 @@ const Trade: React.FC = () => {
 
   return (
     <Wrapper>
-      <Form form={form} name="trading-form" onFinish={values => onFinish({setFormData, values})} autoComplete="off">
-        <Form.Item name="currency" rules={[{ required: true, message: 'Moeda é obrigatório'}]}>
+      <Form labelCol={{ span: 3 }} wrapperCol={{ span: 22 }} form={form} name="trading-form" onFinish={values => onFinish({setFormData, values})} autoComplete="off">
+        <Form.Item name="currency" label="Moeda" labelAlign="left" rules={[{ required: true, message: 'Moeda é obrigatório'}]}>
           <Input placeholder="Moeda" />
         </Form.Item>
 
-        <Form.Item name="code" rules={[{ required: true, message: 'Código Moeda é obrigatório'}]}>
+        <Form.Item name="code" label="Código Moeda" labelAlign="left" rules={[{ required: true, message: 'Código Moeda é obrigatório'}]}>
           <Input placeholder="Código Moeda" />
         </Form.Item>
 
-        <Form.Item name="quantity" label="Quantidade" rules={[{ required: true, message: 'Quantidade é obrigatório'}]}>
+        <Form.Item name="quantity" label="Quantidade" labelAlign="left" rules={[{ required: true, message: 'Quantidade é obrigatório'}]}>
           <InputNumber min="0" max="9999999999" style={{ width: '100%' }} />
         </Form.Item>
 
-        <Form.Item name="price" label="Preço entrada" rules={[{ required: true, message: 'Preço entrada é obrigatório'}]}>
+        <Form.Item name="price" label="Preço entrada" labelAlign="left" rules={[{ required: true, message: 'Preço entrada é obrigatório'}]}>
           <Input min="0" step="0.00001" style={{ width: '100%' }} onChange={(value) => setPrice(value.target.value)} />
         </Form.Item>
 
-        <Form.Item name="value" label="Valor entrada" rules={[{ required: true, message: 'Valor entrada é obrigatório'}]}>
+        <Form.Item name="value" label="Valor entrada" labelAlign="left" rules={[{ required: true, message: 'Valor entrada é obrigatório'}]}>
           <Input min="0" step="0.00001" style={{ width: '100%' }} />
         </Form.Item>
 
         <PartialsContainer>
-          <Form.Item name="gain" label="Ganho" rules={[{ required: true, message: 'Ganho é obrigatório'}]}>
-            <Input min="0" step="0.00001" style={{ width: '100%' }} onChange={(value) => setGain(value.target.value)} />
+          <Form.Item name="gain" label="Ganho" labelCol={{span: 7}} rules={[{ required: true, message: 'Ganho é obrigatório'}]}>
+            <Input min="0" max="100" step="0.1" maxLength={4} style={{ width: '100%' }} onChange={(value) => setGain(value.target.value)} />
           </Form.Item>
-          <Form.Item name="sell" label="Venda" rules={[{ required: true, message: 'Venda é obrigatório'}]}>
-            <Input min="0" step="0.00001" style={{ width: '100%' }} />
+          <Form.Item name="sell" label="Venda" labelCol={{span: 7}} rules={[{ required: true, message: 'Venda é obrigatório'}]}>
+            <Input min="0" max="100" step="0.1" maxLength={4} style={{ width: '100%' }} />
           </Form.Item>
-          <Form.Item name="out" label="Saída" rules={[{ required: true, message: 'Saída é obrigatório'}]}>
+          <Form.Item name="out" label="Saída" labelCol={{span: 7}} rules={[{ required: true, message: 'Saída é obrigatório'}]}>
             <Input disabled={true} style={{ width: '100%' }} />
           </Form.Item>
-          <Form.Item name="loss" label="Perda" rules={[{ required: true, message: 'Perda é obrigatório'}]}>
-            <Input min="0" step="0.00001" style={{ width: '100%' }} onChange={(value) => setLoss(value.target.value)} />
+          <Form.Item name="loss" label="Perda" labelCol={{span: 7}} rules={[{ required: true, message: 'Perda é obrigatório'}]}>
+            <Input min="0" max="100" step="0.1" maxLength={4} style={{ width: '100%' }} onChange={(value) => setLoss(value.target.value)} />
           </Form.Item>
-          <Form.Item name="stop" label="Stop" rules={[{ required: true, message: 'Stop é obrigatório'}]}>
+          <Form.Item name="stop" label="Stop" labelCol={{span: 7}} rules={[{ required: true, message: 'Stop é obrigatório'}]}>
             <Input disabled={true} style={{ width: '100%' }} />
           </Form.Item>
         </PartialsContainer>

@@ -25,3 +25,5 @@ export interface OnFinish {
     stop?: any;
   };
 }
+
+export type AlignType = "right" | "center" | "left";

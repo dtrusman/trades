@@ -35,5 +35,5 @@ export const Delete = styled.a`
 
 export const ButtonName = styled.span`
   display: block;
-  padding: 12px 24px;
+  padding: 6px 0;
 `;
